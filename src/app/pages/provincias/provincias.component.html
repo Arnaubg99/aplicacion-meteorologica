@@ -1,0 +1,12 @@
+
+<div *ngIf="datosCargados == false; else contenido" class="cargando-wrap">
+  <div class="cargando-logo"></div>
+  <p class="cargando-text">Cargando información....</p>
+</div>
+<ng-template #contenido>
+  <h2>Listado de Provincias</h2>
+  <div class="grid">
+    <app-provincia *ngFor="let provincia of provincias[0]" [provincia] = provincia class=""></app-provincia>
+  </div>
+</ng-template>
+

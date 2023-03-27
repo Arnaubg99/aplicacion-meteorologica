@@ -1,0 +1,29 @@
+<section>
+  <div class="container">
+    <div *ngIf="datosCargados == false; else contenido" class="cargando-wrap">
+      <div class="cargando-logo"></div>
+      <p class="cargando-text">Cargando información....</p>
+    </div>
+    <ng-template #contenido>
+      <h1 class="margin-top15 margin-bottom15">Previsión Meteorológica</h1>
+      <div class="glass-background margin-top15 margin-bottom15">
+        <h2>Selecciona una província </h2>
+          <select name="provincias" id="provincias" [(ngModel)]="idSelectProvincia">
+            <option selected disabled>Selecciona una província</option>
+            <option *ngFor="let provincia of provincias" [value]="provincia.CODPROV">{{provincia.NOMBRE_PROVINCIA}}</option>
+          </select>
+          <button *ngIf="idSelectProvincia == 0; else botonActivo" type="submit" class="btn btn-success" disabled>Seleccionar</button>
+          <ng-template #botonActivo>
+            <button type="submit" [routerLink]="['/meteorologia_provincia', idSelectProvincia ]"class="btn btn-success">Seleccionar</button>
+          </ng-template>
+      </div>
+      <div class="glass-background margin-top15 margin-bottom15">
+        <h2>Municipios Destacados</h2>
+        <div class="gridMunicipiosDestacados grid">
+          <app-municipio-destacado *ngFor="let municipio of municipiosDestacados" [municipio] = municipio></app-municipio-destacado>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</section>
+

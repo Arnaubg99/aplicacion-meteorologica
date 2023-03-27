@@ -1,0 +1,170 @@
+<div *ngIf="datosCargados == false; else contenido" class="cargando-wrap">
+  <div class="cargando-logo"></div>
+  <p class="cargando-text">Cargando información....</p>
+</div>
+<ng-template #contenido>
+<section>
+  <div class="container">
+    <div class="nombre-dia">
+      <h3>{{infoMunicipio.NOMBRE}}</h3>
+      <h2>{{fecha}}</h2>
+    </div>
+    <div class="temperaturas">
+      <h1>{{temperaturas.act}}ºC</h1>
+      <div class="estadoCielo">
+        <img src="{{fotoURL}}" alt="" class="logoCielo">
+        <p class="textCielo">{{estadoCielo.toUpperCase()}}</p>
+      </div>
+        <div class="minMax-wrap">
+          <div class="min minMax glass-background"><b>MIN: {{temperaturas.min}}ºC</b></div>
+          <div class="max minMax glass-background"><b>MAX: {{temperaturas.max}}ºC</b></div>
+        </div>
+    </div>
+    <div class="caracteristicas-wrap">
+      <div class="caracteristicas glass-background">
+        <img src="./assets/paraguas.png" alt="" class="caracteristicas-logo">
+        <p class="caracteristicas-text">P. Lluvia</p>
+        <p>{{caracteristicas["p.lluvia"]}}%</p>
+      </div>
+      <div class="caracteristicas glass-background">
+        <img src="./assets/humedad.png" alt="" class="caracteristicas-logo">
+        <p class="caracteristicas-text">Húmedad</p>
+        <p>{{caracteristicas.humedad}}%</p>
+      </div>
+      <div class="caracteristicas glass-background">
+        <img src="./assets/viento.png" alt="" class="caracteristicas-logo">
+        <p class="caracteristicas-text">Viento</p>
+        <p>{{caracteristicas.viento}}km/h</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <h2>Pronóstico de mañana</h2>
+    <div class="pronosticos-wrap glass-background">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">00:00</th>
+            <th scope="col">01:00</th>
+            <th scope="col">02:00</th>
+            <th scope="col">03:00</th>
+            <th scope="col">04:00</th>
+            <th scope="col">05:00</th>
+            <th scope="col">06:00</th>
+            <th scope="col">07:00</th>
+            <th scope="col">08:00</th>
+            <th scope="col">09:00</th>
+            <th scope="col">10:00</th>
+            <th scope="col">11:00</th>
+            <th scope="col">12:00</th>
+            <th scope="col">13:00</th>
+            <th scope="col">14:00</th>
+            <th scope="col">15:00</th>
+            <th scope="col">16:00</th>
+            <th scope="col">17:00</th>
+            <th scope="col">18:00</th>
+            <th scope="col">19:00</th>
+            <th scope="col">20:00</th>
+            <th scope="col">21:00</th>
+            <th scope="col">22:00</th>
+            <th scope="col">23:00</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td *ngFor=" let a of pronosticos.pronosticoEstadoCielo.manana"><img [src]= "data.cieloFotos[a]" alt=""></td>
+          </tr>
+          <tr>
+            <td *ngFor=" let a of pronosticos.pronosticoTemperatura.manana">{{a}}ºC</td>
+          </tr>
+          <tr>
+            <td *ngFor=" let a of pronosticos.pronosticoLluvia.manana"><img src="./assets/paraguas.png" class="pronosticos-logo">{{a}}%</td>
+          </tr>
+          <tr>
+            <td *ngFor=" let a of pronosticos.pronosticoNieve.manana"><img src="./assets/nieve.png" class="pronosticos-logo">{{a}}%</td>
+          </tr>
+          <tr>
+            <td *ngFor=" let a of pronosticos.pronosticoViento.manana"><img src="./assets/viento.png" class="pronosticos-logo">{{a.velocidad}}km/h</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<section class="sectionHeight">
+  <div class="container">
+    <h2>Pronóstico de los próximos días</h2>
+    <div class="glass-background grid">
+      <app-pronostico-proximos-dias *ngFor="let proximoDia of proximosDias" [datos]=proximoDia ></app-pronostico-proximos-dias>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <h2>Más información sobre {{infoMunicipio.NOMBRE}}</h2>
+    <div class="informacion-wrap glass-background">
+      <div class="informacion-mapa">
+        <google-map [center]="posicionMapa" width="100%">
+          <map-marker [position]="posicionMapa"></map-marker>
+        </google-map>
+      </div>
+      <div class="informacion-info-wrap">
+        <div class="informacion-info">
+          <div class="amanecer_atardecer-wrap">
+            <div class="amanecer-wrap">
+              <div class="amanecer-titulo">Amanecer</div>
+              <div class="amanecer-info">
+                <img class="amanecer_atardecer-logo" src="./assets/salida-sol.png" alt="amanecer">
+                <b>{{salidaPuestaSol.amanecer}}</b>
+              </div>
+            </div>
+            <div class="atardecer-wrap">
+              <div class="atardecer-titulo">Atardecer</div>
+              <div class="atardecer-info">
+                <img class="amanecer_atardecer-logo" src="./assets/puesta-sol.png" alt="amanecer">
+                <b>{{salidaPuestaSol.atardecer}}</b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="informacion-grid">
+          <div class="info">
+            <p>Província</p>
+            <b>{{infoMunicipio.NOMBRE_PROVINCIA}}</b>
+          </div>
+          <div class="info">
+            <p>Capital</p>
+            <b>{{infoMunicipio.NOMBRE_CAPITAL}}</b>
+          </div>
+          <div class="info">
+            <p>Población</p>
+            <b>{{infoMunicipio.POBLACION_MUNI}}</b>
+          </div>
+          <div class="info">
+            <p>Superfície</p>
+            <b>{{infoMunicipio.SUPERFICIE}}km2</b>
+          </div>
+          <div class="info">
+            <p>Perímetro</p>
+            <b>{{infoMunicipio.PERIMETRO}}km</b>
+          </div>
+          <div class="info">
+            <p>Altitud</p>
+            <b>{{infoMunicipio.ALTITUD}}msnm</b>
+          </div>
+          <div class="info">
+            <p>Latitud</p>
+            <b>{{posicionMapa.lat}}</b>
+          </div>
+          <div class="info">
+            <p>Longitud</p>
+            <b>{{posicionMapa.lng}}</b>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</ng-template>

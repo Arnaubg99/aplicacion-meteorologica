@@ -1,0 +1,17 @@
+<div class="tarjeta" [routerLink]="['/meteorologia_municipio',idProvincia, idMunicipio]">
+  <div class="tarjeta-nombre">
+    <h3>{{municipio.name}}</h3>
+    <h4>{{municipio.nameProvince}}</h4>
+  </div>
+  <div class="tarjeta-foto">
+    <img *ngIf="fotoURL != undefined; else cieloText" src="{{fotoURL}}"/>
+    <ng-template #cieloText>
+      <b>{{estadoCielo}}</b>
+    </ng-template>
+  </div>
+  <div class="tarjeta-info">
+    <p><b>Min: </b> {{municipio.temperatures.min}}ºC</p>
+    <p><b>Max: </b> {{municipio.temperatures.max}}ºC</p>
+  </div>
+</div>
+

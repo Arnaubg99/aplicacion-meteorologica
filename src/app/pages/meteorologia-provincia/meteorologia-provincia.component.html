@@ -1,0 +1,45 @@
+<section>
+  <div class="container">
+    <div *ngIf="datosCargados == false; else contenido" class="cargando-wrap">
+      <div class="cargando-logo"></div>
+      <p class="cargando-text">Cargando información....</p>
+    </div>
+    <ng-template #contenido>
+      <div class="margin-top15 margin-bottom15 titulo-wrap">
+        <h1>{{title}}</h1>
+        <p>{{keywords}}</p>
+      </div>
+      <div class="glass-background">
+        <h2>Selecciona un municipio </h2>
+        <form>
+          <select name="municipios" id="municipios" [(ngModel)]="idSelectMunicipio">
+            <option selected disabled>Selecciona un municipio</option>
+            <option *ngFor="let municipio of municipios" [value]="municipio.CODIGOINE.slice(0,5)">{{municipio.NOMBRE}}</option>
+          </select>
+          <button *ngIf="idSelectMunicipio == 0; else botonActivo" type="submit" class="btn btn-success" disabled>Seleccionar</button>
+          <ng-template #botonActivo>
+              <button type="submit" [routerLink]="['/meteorologia_municipio',idProvincia, idSelectMunicipio ]"class="btn btn-success">Seleccionar</button>
+          </ng-template>
+        </form>
+      </div>
+      <div class="tiempo-provincia-card-wrap margin-top15 margin-bottom15 glass-background">
+        <div class="tiempo-provincia-card">
+          <h3>Hoy:</h3>
+          <p>{{tiempoHoy}}</p>
+          <div></div>
+        </div>
+        <div class="tiempo-provincia-card">
+          <h3>Mañana:</h3>
+          <p>{{tiempoManana}}</p>
+          <div></div>
+        </div>
+      </div>
+      <div class="margin-bottom15 glass-background">
+        <h2>Municipios Destacados</h2>
+        <div class=" grid">
+          <app-municipio-destacado *ngFor="let municipio of municipiosDestacados" [municipio] = municipio></app-municipio-destacado>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</section>

@@ -1,0 +1,8 @@
+.pronostico-card{
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+}
+img{
+  width: 30px;
+}
