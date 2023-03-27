@@ -34,7 +34,7 @@
           <div></div>
         </div>
       </div>
-      <div class="margin-bottom15 glass-background">
+      <div *ngIf="municipiosDestacados.length != 0" class="margin-bottom15 glass-background">
         <h2>Municipios Destacados</h2>
         <div class=" grid">
           <app-municipio-destacado *ngFor="let municipio of municipiosDestacados" [municipio] = municipio></app-municipio-destacado>

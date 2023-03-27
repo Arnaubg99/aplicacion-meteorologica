@@ -54,6 +54,7 @@ export class MeteorologiaProvinciaComponent implements OnInit {
           this.municipios.push(this.municipiosObject[prop]);
           i++;
         }
+        console.log(this.municipiosDestacados.length)
       })
     })
   }
