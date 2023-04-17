@@ -1,9 +1,6 @@
 <section>
   <div class="container">
-    <div *ngIf="datosCargados == false; else contenido" class="cargando-wrap">
-      <div class="cargando-logo"></div>
-      <p class="cargando-text">Cargando información....</p>
-    </div>
+    <app-loading *ngIf="datosCargados == false; else contenido"></app-loading>
     <ng-template #contenido>
       <h1 class="margin-top15 margin-bottom15">Previsión Meteorológica</h1>
       <div class="glass-background margin-top15 margin-bottom15">

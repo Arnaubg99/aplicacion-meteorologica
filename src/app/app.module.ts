@@ -17,6 +17,7 @@ import { MetereologiaMunicipioComponent } from './pages/metereologia-municipio/m
 import { PronosticoComponent } from './components/pronostico/pronostico.component';
 import { PronosticoProximosDiasComponent } from './components/pronostico-proximos-dias/pronostico-proximos-dias.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MetereologiaMunicipioComponent,
     PronosticoComponent,
     PronosticoProximosDiasComponent,
-    FooterComponent
+    FooterComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

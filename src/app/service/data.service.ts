@@ -42,6 +42,8 @@ export class DataService {
       "16n": "./assets/nube.svg",
       "17": "./assets/solNube.svg",
       "17n": "./assets/lunaNube.svg",
+      "24": "./assets/lluvia.svg",
+      "24n": "./assets/lunaNubeLluvia.svg",
       "25": "./assets/lluvia.svg",
       "25n": "./assets/lluvia.svg",
       "26": "./assets/lluvia.svg",

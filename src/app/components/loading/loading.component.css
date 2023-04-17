@@ -1,0 +1,17 @@
+.cargando-wrap{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.cargando-logo{
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-left-color: transparent;
+  margin-bottom: 15px;
+  animation: spin 1s linear infinite;
+}
