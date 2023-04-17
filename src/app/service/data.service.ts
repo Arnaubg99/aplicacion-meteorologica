@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http"
-import { Provincia } from '../models/provincia.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
