@@ -11,4 +11,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'aplicacion-meteorologica';
+  fol = true
+
+  asdf(){
+    this.fol = !this.fol
+  }
 }
