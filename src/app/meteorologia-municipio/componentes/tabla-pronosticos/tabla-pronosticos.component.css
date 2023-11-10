@@ -1,0 +1,27 @@
+
+.pronosticos-wrap{
+  width: 100%;
+  overflow-x: scroll;
+  padding: 10px;
+}
+.pronosticos-wrap::-webkit-scrollbar{
+  height: 10px;
+  background-color: transparent;
+}
+.pronosticos-wrap::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background-color: #787878;
+}
+.table{
+  color: white;
+  table-layout: fixed;
+  width: 300px;
+}
+th, td{
+  width: 150px;
+  word-wrap: break-word;
+}
+.pronosticos-logo{
+  width: 20px;
+  margin-right: 5px;
+}

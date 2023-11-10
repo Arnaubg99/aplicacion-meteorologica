@@ -1,1 +1,123 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+  --background-color: #1f1f1f;
+  --text-color: #e0e0e0;
+  --card-color: #303030;
+  --card-color-hover: #787878;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  /* background: var(--morat);  */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+body{
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+.max-container{
+  max-width: 1440px;
+  margin: 0 auto;
+}
+section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+  text-align: center;
+}
+p{
+  margin: 0;
+}
+.grid{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+  grid-gap: 5px;
+}
+
+select{
+  width: 50%;
+  height: 35px;
+  border-radius: 10px;
+  background-color: #303030;
+  color: #cfcfcf;
+  margin-right: 10px;
+}
+
+.glass-background{
+  background: rgba(255, 255, 255, 0.21);
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.2px);
+  -webkit-backdrop-filter: blur(5.2px);
+  width: 100%;
+}
+
+.margin-bottom15{
+  margin-bottom: 15px;
+}
+.margin-top15{
+  margin-top: 15px;
+}
+
+.tarjeta{
+  background-color: var(--card-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: center;
+  transition: all 400ms ease;
+}
+.tarjeta:hover{
+  background-color: var(--card-color-hover);
+  animation-name: moverCard;
+  transform: translateY(-4%);
+}
+.tarjeta-foto{
+  margin: 10px 0;
+}
+.tarjeta-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+h3{
+  font-size: 18px;
+}
+h4{
+  font-size: 10px;
+  margin: 0;
+}
+img{
+  width: 40px;
+}
+
+.width-100{
+  width: 100% !important;
+}
+@keyframes spin{
+  0%{
+    transform: rotate(0deg);
+  }100%{
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,61 @@
+<div class="informacion-wrap glass-background">
+  <div class="informacion-mapa">
+    <google-map [center]="posicionMapa" width="100%">
+      <map-marker [position]="posicionMapa"></map-marker>
+    </google-map>
+  </div>
+  <div class="informacion-info-wrap">
+    <div class="informacion-info">
+      <div class="amanecer_atardecer-wrap">
+        <div class="amanecer-wrap">
+          <div class="amanecer-titulo">Amanecer</div>
+          <div class="amanecer-info">
+            <img class="amanecer_atardecer-logo" src="./assets/imagenes-cielo/salida-sol.png" alt="amanecer" ErrorEnLaImagen>
+            <b>{{ informacionMunicipio.pronostico.hoy["@attributes"].orto }}</b>
+          </div>
+        </div>
+        <div class="atardecer-wrap">
+          <div class="atardecer-titulo">Atardecer</div>
+          <div class="atardecer-info">
+            <img class="amanecer_atardecer-logo" src="./assets/imagenes-cielo/puesta-sol.png" alt="amanecer" ErrorEnLaImagen>
+            <b>{{ informacionMunicipio.pronostico.hoy["@attributes"].ocaso }}</b>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="informacion-grid">
+      <div class="info">
+        <p>Província</p>
+        <b>{{informacionMunicipio.municipio.NOMBRE_PROVINCIA}}</b>
+      </div>
+      <div class="info">
+        <p>Capital</p>
+        <b>{{informacionMunicipio.municipio.NOMBRE_CAPITAL}}</b>
+      </div>
+      <div class="info">
+        <p>Población</p>
+        <b>{{informacionMunicipio.municipio.POBLACION_MUNI}}</b>
+      </div>
+      <div class="info">
+        <p>Superfície</p>
+        <b>{{informacionMunicipio.municipio.SUPERFICIE}}km2</b>
+      </div>
+      <div class="info">
+        <p>Perímetro</p>
+        <b>{{informacionMunicipio.municipio.PERIMETRO}}km</b>
+      </div>
+      <div class="info">
+        <p>Altitud</p>
+        <b>{{informacionMunicipio.municipio.ALTITUD}}msnm</b>
+      </div>
+      <div class="info">
+        <p>Latitud</p>
+        <b>{{ informacionMunicipio.municipio.LATITUD_ETRS89_REGCAN95 }}</b>
+      </div>
+      <div class="info">
+        <p>Longitud</p>
+        <b>{{ informacionMunicipio.municipio.LATITUD_ETRS89_REGCAN95 }}</b>
+      </div>
+    </div>
+  </div>
+</div>

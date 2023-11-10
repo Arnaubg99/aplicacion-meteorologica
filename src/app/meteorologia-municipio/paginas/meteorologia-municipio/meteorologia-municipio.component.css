@@ -1,0 +1,80 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.nombre-dia{
+  margin: 50px 0;
+}
+h1{
+  font-size: 100px;
+}
+h2{
+  font-size: 25px;
+}
+h3{
+  font-size: 15px
+}
+.logoCielo{
+  width: 60px;
+}
+.textCielo{
+  height: 30px;
+}
+.estadoCielo{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 50px 0;
+  gap: 20px
+}
+.temperaturas{
+  display: flex;
+  flex-direction: column;
+}
+.minMax-wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: space-around;
+  gap: 30px
+}
+.minMax{
+  padding: 15px;
+  min-width: 125px;
+}
+.min{
+  color:aqua
+}
+.max{
+  color: orange
+}
+.caracteristicas-wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 40px;
+}
+.caracteristicas{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  min-width: 174px;
+  min-height: 151px;
+}
+.caracteristicas-logo{
+  width: 30px;
+}
+.caracteristicas-text{
+  margin: 15px 0;
+}
+/* ////////////////////////////////////////////////////////// */
+@media(max-width: 767px){
+  .caracteristicas-wrap{
+    flex-direction: column;
+  }
+}

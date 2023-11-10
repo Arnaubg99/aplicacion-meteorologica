@@ -1,0 +1,50 @@
+@if(!informacionProvincia){
+  <app-loading />
+}@else{
+  <section>
+    <div class="margin-top15 margin-bottom15 titulo-wrap">
+      <h1>{{ informacionProvincia.title }}</h1>
+      <p>{{ informacionProvincia.keywords }}</p>
+    </div>
+    <div class="glass-background">
+      <h2>Selecciona un municipio </h2>
+      <div>
+        <select name="municipios" id="municipios" [(ngModel)]="municipioId">
+          <option selected disabled>Selecciona un municipio</option>
+          @if(listadoMunicipios)
+          {
+            @for (municipio of listadoMunicipios; track municipio.id)
+            {
+              <option [value]="municipio.id">{{ municipio.nombre }}</option>
+            }
+          }
+        </select>
+        <button type="submit" routerLink="/meteorologia-municipio/{{ informacionProvincia.provincia.CODPROV }}/{{ municipioId }}" class="btn btn-success" [disabled]="!municipioId">Seleccionar</button>
+      </div>
+    </div>
+    <div class="tiempo-provincia-card-wrap margin-top15 margin-bottom15 glass-background">
+      <div class="tiempo-provincia-card">
+        <h3>Hoy:</h3>
+        <span>{{ informacionProvincia.today.p }}</span>
+        <div></div>
+      </div>
+      <div class="tiempo-provincia-card">
+        <h3>Mañana:</h3>
+        <span>{{ informacionProvincia.tomorrow.p }}</span>
+        <div></div>
+      </div>
+    </div>
+    <div class="glass-background">
+      <h2>Municipios Destacados</h2>
+      <div class=" grid">
+        @if(informacionProvincia){
+          @for (ciudad of informacionProvincia.ciudades; track ciudad.id){
+            <municipio-destacado
+              [municipio]="ciudad"
+            />
+          }
+        }
+      </div>
+    </div>
+  </section>
+}

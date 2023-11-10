@@ -1,0 +1,15 @@
+<div class="tarjeta">
+  <div class="tarjeta-nombre">
+    <h3>{{pronostico["@attributes"].fecha}}</h3>
+
+  </div>
+  <div class="tarjeta-foto">
+    <img  src="{{ ImagenesCieloService.IMAGENES_CIELO[pronostico.estado_cielo[0]] }}" ErrorEnLaImagen/>
+    <b></b>
+  </div>
+  <div class="tarjeta-info">
+    <p><b>Min: </b>{{pronostico.temperatura.minima}}ºC</p>
+    <p><b>Max: </b>{{pronostico.temperatura.maxima}}ºC</p>
+  </div>
+</div>
+

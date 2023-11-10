@@ -1,0 +1,34 @@
+@if(!informacionNacional){
+  <app-loading />
+}@else{
+<section>
+  <h1 class="margin-top15 margin-bottom15">Previsión Meteorológica</h1>
+  <div class="glass-background margin-top15 margin-bottom15">
+    <h2>Selecciona una província </h2>
+      <select name="provincias" id="provincias" [(ngModel)]="provinciaId">
+        <option selected disabled>Selecciona una província</option>
+
+        @if(informacionNacional)
+        {
+          @for (provincia of informacionNacional.provincias; track provincia.CODPROV)
+          {
+            <option [value]="provincia.CODPROV">{{ provincia.NOMBRE_PROVINCIA }}</option>
+          }
+        }
+      </select>
+      <button type="submit" class="btn btn-success" routerLink="/meteorologia-provincia/{{ provinciaId }}" [disabled]="!provinciaId">Seleccionar</button>
+  </div>
+  <div class="glass-background margin-top15 margin-bottom15">
+    <h2>Municipios Destacados</h2>
+    <div class="gridMunicipiosDestacados grid">
+      @if(informacionNacional){
+        @for (ciudad of informacionNacional.ciudades; track ciudad.id){
+          <municipio-destacado
+            [municipio]="ciudad"
+          />
+        }
+      }
+    </div>
+  </div>
+</section>
+}

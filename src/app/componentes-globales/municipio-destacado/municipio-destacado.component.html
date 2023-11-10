@@ -1,0 +1,14 @@
+<article class="tarjeta" routerLink="/meteorologia-municipio/{{ municipio.idProvince }}/{{municipio.id}}">
+  <div class="tarjeta-nombre">
+    <h3>{{municipio.name}}</h3>
+    <h4>{{municipio.nameProvince}}</h4>
+  </div>
+  <div class="tarjeta-foto">
+    <img src="{{ fotoURL }}" ErrorEnLaImagen />
+  </div>
+  <div class="tarjeta-info">
+    <p><b>Min: </b> {{municipio.temperatures.min}}ºC</p>
+    <p><b>Max: </b> {{municipio.temperatures.max}}ºC</p>
+  </div>
+</article>
+

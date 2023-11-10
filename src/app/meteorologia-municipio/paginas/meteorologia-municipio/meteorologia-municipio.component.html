@@ -1,0 +1,66 @@
+@if(!informacionMunicipio){
+  <app-loading />
+}@else{
+  <section>
+    <div>
+      <div class="container">
+        <div class="nombre-dia">
+          <h3>{{ informacionMunicipio.municipio.NOMBRE }}</h3>
+          <h2>{{ informacionMunicipio.fecha }}</h2>
+        </div>
+        <div class="temperaturas">
+          <h1>{{ informacionMunicipio.temperatura_actual }}ºC</h1>
+          <div class="estadoCielo">
+            <img src="{{ ImagenesCieloService.IMAGENES_CIELO[informacionMunicipio.stateSky.description] }}" alt="" class="logoCielo" ErrorEnLaImagen />
+            <p class="textCielo">{{ informacionMunicipio.stateSky.description.toUpperCase() }}</p>
+          </div>
+            <div class="minMax-wrap">
+              <div class="min minMax glass-background"><b>MIN: {{ informacionMunicipio.temperaturas.min }}ºC</b></div>
+              <div class="max minMax glass-background"><b>MAX: {{ informacionMunicipio.temperaturas.max }}ºC</b></div>
+            </div>
+        </div>
+        <div class="caracteristicas-wrap">
+          <div class="caracteristicas glass-background">
+            <img src="./assets/imagenes-cielo/paraguas.png" alt="" class="caracteristicas-logo" ErrorEnLaImagen />
+            <p class="caracteristicas-text">P. Lluvia</p>
+            <p>{{ informacionMunicipio.lluvia }}%</p>
+          </div>
+          <div class="caracteristicas glass-background">
+            <img src="./assets/imagenes-cielo/humedad.png" alt="" class="caracteristicas-logo" ErrorEnLaImagen />
+            <p class="caracteristicas-text">Húmedad</p>
+            <p>{{ informacionMunicipio.humedad }}%</p>
+          </div>
+          <div class="caracteristicas glass-background">
+            <img src="./assets/imagenes-cielo/viento.png" alt="" class="caracteristicas-logo" ErrorEnLaImagen />
+            <p class="caracteristicas-text">Viento</p>
+            <p>{{ informacionMunicipio.viento }}km/h</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="width-100">
+      <div>
+        <h2>Pronóstico de mañana</h2>
+          <tabla-pronosticos
+            [pronostico]="informacionMunicipio.pronostico"
+          />
+      </div>
+    </div>
+    <div class="width-100">
+      <h2>Pronóstico de los próximos días</h2>
+      <div class="glass-background grid">
+        @for(proximoDia of informacionMunicipio.proximos_dias; track $index){
+          <app-pronostico-proximos-dias-card
+            [pronostico]="proximoDia"
+          />
+        }
+      </div>
+    </div>
+    <div class="width-100">
+        <h2>Más información sobre {{informacionMunicipio.municipio.NOMBRE}}</h2>
+        <app-mas-informacion
+          [informacionMunicipio]="informacionMunicipio"
+        />
+    </div>
+  </section>
+}
