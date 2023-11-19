@@ -17,12 +17,20 @@ import { LoadingComponent } from '../componentes-globales/loading/loading.compon
   styleUrl: './meteorologia-provincia.component.css'
 })
 export class MeteorologiaProvinciaComponent {
-  readonly ruta: ActivatedRoute = inject(ActivatedRoute);
-  readonly API_SERVICE: ApiService = inject(ApiService);
+  readonly ruta: ActivatedRoute;
+  readonly API_SERVICE: ApiService;
 
   informacionProvincia!: InformacionProvincia;
-  listadoMunicipios!: MunicipioLista[];
-  municipioId!: String;
+  listadoMunicipios: MunicipioLista[];
+  municipioId: string;
+
+  constructor(){
+    this.ruta = inject(ActivatedRoute);
+    this.API_SERVICE = inject(ApiService);
+
+    this.listadoMunicipios = [];
+    this.municipioId = '';
+  }
 
   ngOnInit(){
     this.ruta.params.subscribe(params =>{

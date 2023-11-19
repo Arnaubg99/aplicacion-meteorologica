@@ -1,7 +1,7 @@
 import { ImagenesCieloService } from './../../servicios/imagenes-cielo/imagenes-cielo.service';
 import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ImagenErrorDirective } from '../../directivas/imagen-error.directive';
+import { ImagenErrorDirective } from '../../directivas/imagen-error/imagen-error.directive';
 import { Ciudad } from '../../interfaces/ciudad';
 import { RouterLink } from '@angular/router';
 
@@ -14,12 +14,18 @@ import { RouterLink } from '@angular/router';
   styleUrl: './municipio-destacado.component.css'
 })
 export class MunicipioDestacadoComponent {
-  readonly ImagenesCieloService: ImagenesCieloService = inject(ImagenesCieloService);
+  readonly imagenesCieloService: ImagenesCieloService;
 
   @Input() municipio!: Ciudad;
-  fotoURL!: string;
+  fotoURL: string;
+
+  constructor(){
+    this.imagenesCieloService = inject(ImagenesCieloService);
+
+    this.fotoURL = '';
+  }
 
   ngOnInit(): void {
-    this.fotoURL = this.ImagenesCieloService.IMAGENES_CIELO[this.municipio.stateSky.description]
+    this.fotoURL = this.imagenesCieloService.IMAGENES_CIELO[this.municipio.stateSky.description]
   }
 }

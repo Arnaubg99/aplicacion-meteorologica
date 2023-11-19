@@ -8,8 +8,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  readonly http: HttpClient = inject(HttpClient)
+  readonly http: HttpClient;
 
+  constructor(){
+    this.http = inject(HttpClient);
+  }
   getDatos(ruta: string):Observable<any>{
     return this.http.get(`${environment.API_URL}${ruta}`).pipe(
       catchError(error =>{

@@ -2,7 +2,7 @@ import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProximosDia } from '../../../interfaces/proximos-dias';
 import { ImagenesCieloService } from '../../../servicios/imagenes-cielo/imagenes-cielo.service';
-import { ImagenErrorDirective } from '../../../directivas/imagen-error.directive';
+import { ImagenErrorDirective } from '../../../directivas/imagen-error/imagen-error.directive';
 
 @Component({
   selector: 'app-pronostico-proximos-dias-card',
@@ -12,7 +12,11 @@ import { ImagenErrorDirective } from '../../../directivas/imagen-error.directive
   styleUrl: './pronostico-proximos-dias-card.component.css'
 })
 export class PronosticoProximosDiasCardComponent {
-  readonly ImagenesCieloService: ImagenesCieloService = inject(ImagenesCieloService);
+  readonly imagenesCieloService: ImagenesCieloService;
 
   @Input() pronostico!: ProximosDia
+
+  constructor(){
+    this.imagenesCieloService = inject(ImagenesCieloService);
+  }
 }

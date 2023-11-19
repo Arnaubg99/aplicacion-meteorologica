@@ -12,10 +12,14 @@ import { GoogleMapsModule } from '@angular/google-maps'
 })
 export class MasInformacionComponent {
  @Input() informacionMunicipio!: InformacionMunicipio;
- posicionMapa = {
+ posicionMapa;
+
+ constructor(){
+  this.posicionMapa = {
     "lat": 0,
     "lng": 0
- };
+  };
+ }
 
  ngOnInit(): void {
   this.posicionMapa["lat"] = this.informacionMunicipio.municipio.LATITUD_ETRS89_REGCAN95

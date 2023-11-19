@@ -11,7 +11,7 @@
         <div class="temperaturas">
           <h1>{{ informacionMunicipio.temperatura_actual }}ºC</h1>
           <div class="estadoCielo">
-            <img src="{{ ImagenesCieloService.IMAGENES_CIELO[informacionMunicipio.stateSky.description] }}" alt="" class="logoCielo" ErrorEnLaImagen />
+            <img src="{{ imagenesCieloService.IMAGENES_CIELO[informacionMunicipio.stateSky.description] }}" alt="" class="logoCielo" ErrorEnLaImagen />
             <p class="textCielo">{{ informacionMunicipio.stateSky.description.toUpperCase() }}</p>
           </div>
             <div class="minMax-wrap">

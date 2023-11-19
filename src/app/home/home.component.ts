@@ -16,9 +16,15 @@ import { LoadingComponent } from '../componentes-globales/loading/loading.compon
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  readonly API_SERVICE: ApiService = inject(ApiService);
+  readonly API_SERVICE: ApiService;
   informacionNacional!: InformacionNacional;
-  provinciaId!: number;
+  provinciaId: number;
+
+  constructor(){
+    this.API_SERVICE = inject(ApiService);
+
+    this.provinciaId = 0;
+  }
 
   ngOnInit(): void {
     this.API_SERVICE.getDatos('home').subscribe((respuesta =>{

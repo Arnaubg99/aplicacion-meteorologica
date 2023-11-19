@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../../servicios/api/api.service';
 import { InformacionMunicipio } from '../../../interfaces/informacion-municipio';
-import { ImagenErrorDirective } from '../../../directivas/imagen-error.directive';
+import { ImagenErrorDirective } from '../../../directivas/imagen-error/imagen-error.directive';
 import { TablaPronosticosComponent } from '../../componentes/tabla-pronosticos/tabla-pronosticos.component';
 import { ImagenesCieloService } from '../../../servicios/imagenes-cielo/imagenes-cielo.service';
 import { PronosticoProximosDiasCardComponent } from '../../componentes/pronostico-proximos-dias-card/pronostico-proximos-dias-card.component';
@@ -18,15 +18,23 @@ import { MasInformacionComponent } from '../../componentes/mas-informacion/mas-i
   styleUrl: './meteorologia-municipio.component.css'
 })
 export class MeteorologiaMunicipioComponent {
-  readonly ruta: ActivatedRoute = inject(ActivatedRoute);
-  readonly API_SERVICE: ApiService = inject(ApiService);
-  readonly ImagenesCieloService: ImagenesCieloService = inject(ImagenesCieloService);
+  readonly ruta: ActivatedRoute;
+  readonly API_SERVICE: ApiService;
+  readonly imagenesCieloService: ImagenesCieloService;
 
   informacionMunicipio!: InformacionMunicipio;
-  posicionMapa = {
-    "lat": 0,
-    "lng": 0
-  };
+  posicionMapa;
+
+  constructor(){
+    this.ruta= inject(ActivatedRoute);
+    this.API_SERVICE = inject(ApiService);
+    this.imagenesCieloService = inject(ImagenesCieloService);
+
+    this.posicionMapa = {
+      "lat": 0,
+      "lng": 0
+    };
+  }
 
   ngOnInit(){
     this.ruta.params.subscribe(params =>{
